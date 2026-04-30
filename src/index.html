@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab 5</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+  <div class="noise"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-meta">
+        <span class="meta-label">Laboratorio</span>
+        <span class="meta-sep">//</span>
+        <span class="meta-value">Manipulación del DOM</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-main">
+
+    <section class="counter-panel">
+      <div class="counter-block">
+        <span class="counter-num" id="count-pending">0</span>
+        <span class="counter-label">Pendientes</span>
+      </div>
+      <div class="counter-divider"></div>
+      <div class="counter-block">
+        <span class="counter-num done" id="count-done">0</span>
+        <span class="counter-label">Completadas</span>
+      </div>
+      <div class="counter-divider"></div>
+      <div class="counter-block">
+        <span class="counter-num total" id="count-total">0</span>
+        <span class="counter-label">Total</span>
+      </div>
+    </section>
+
+    <section class="input-section">
+      <div class="input-wrapper" id="input-wrapper">
+        <span class="prompt-sign">›</span>
+        <input
+          type="text"
+          id="task-input"
+          class="task-input"
+          placeholder="Nueva tarea..."
+          autocomplete="off"
+          maxlength="120"
+        />
+        <button class="btn-add" id="btn-add" aria-label="Agregar tarea">
+          <span class="btn-add-icon">+</span>
+          <span class="btn-add-text">Agregar</span>
+        </button>
+      </div>
+      <div class="error-msg" id="error-msg" aria-live="polite"></div>
+    </section>
+
+    <section class="filter-bar">
+      <button class="filter-btn active" data-filter="all">Todas</button>
+      <button class="filter-btn" data-filter="pending">Pendientes</button>
+      <button class="filter-btn" data-filter="done">Completadas</button>
+      <div class="filter-spacer"></div>
+      <button class="btn-clear-done" id="btn-clear-done">Eliminar completadas</button>
+    </section>
+
+    <section class="task-list-section">
+      <ul class="task-list" id="task-list" role="list"></ul>
+
+      <div class="empty-state" id="empty-state">
+        <p class="empty-sub">Agrega tu primera tarea arriba</p>
+      </div>
+    </section>
+
+  </main>
+
+  <template id="task-template">
+    <li class="task-item" role="listitem">
+      <button class="task-check" aria-label="Marcar completada">
+        <span class="check-box"></span>
+      </button>
+      <span class="task-text"></span>
+      <span class="task-method">.textContent</span>
+      <button class="task-delete" aria-label="Eliminar tarea">
+        <span class="delete-icon">.remove()</span>
+      </button>
+    </li>
+  </template>
+
+  <!-- type="module" habilita ES Modules e importaciones -->
+  <script type="module" src="index.js"></script>
+</body>
+</html>
